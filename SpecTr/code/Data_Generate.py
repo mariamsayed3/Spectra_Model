@@ -83,7 +83,7 @@ class Data_Generate_Cho(Dataset):#
         # if mask_path.endswith('.npz'):
         #     mask = np.delete(mask, 445, 0)
         #     img = np.delete(img, 445, 0)
-        
+
         print(f"Image shape: {img.shape}, Mask shape: {mask.shape}")
 
         if img.shape != mask.shape:
@@ -109,6 +109,7 @@ class Data_Generate_Cho(Dataset):#
                     mask = mask.astype(np.int32)
             print("before transform")
             img, mask = self.transform((img, mask))
+            print("afterr transform")
         mask = mask.astype(np.uint8)
         if self.cutting is not None:
             while(1):
@@ -127,6 +128,7 @@ class Data_Generate_Cho(Dataset):#
             img = img[None]
         mask = mask[None, ].astype(np.float32)
         img = img.astype(np.float32)
+        print("end")
         return img, mask
             
     def __len__(self):

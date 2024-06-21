@@ -50,10 +50,10 @@ class Data_Generate_Cho(Dataset):#
             y_seg = tiff.mtiff_to_2d_arr(masks)
             mask = cv2.resize(y_seg, (320, 256), interpolation=cv2.INTER_NEAREST)
         elif mask_path.endswith('.npy'):
-            print("hello from mask")
+            #print("hello from mask")
             mask = np.load(mask_path) 
-            print(mask.shape[0])
-            print(mask.shape[1])       
+            # print(mask.shape[0])
+            # print(mask.shape[1])       
         else:
             mask = (cv2.imread(mask_path, 0) / 255).astype(np.uint8)
 
@@ -91,25 +91,25 @@ class Data_Generate_Cho(Dataset):#
 
         if self.transform != None:
             if img.dtype != np.uint8:
-                print("hii from main if image")
+                #print("hii from main if image")
                 if img.max() <= 1.0:  # Assuming float images in range [0, 1]
-                    print("hii from if image")
+                    #print("hii from if image")
                     img = (img * 255).astype(np.uint8)
                 else:
-                    print("hiii from else image")
+                    #print("hiii from else image")
                     img = img.astype(np.uint8)
         
             if mask.dtype not in [np.uint8, np.int32]:
-                print("hii from main if mask")
+                #print("hii from main if mask")
                 if mask.max() <= 255:
-                    print("hiii from mask if")
+                    #print("hiii from mask if")
                     mask = mask.astype(np.uint8)
                 else:
-                    print("hiiii from mask else")
+                    #print("hiiii from mask else")
                     mask = mask.astype(np.int32)
-            print("before transform")
+            #print("before transform")
             img, mask = self.transform((img, mask))
-            print("afterr transform")
+            #print("afterr transform")
         mask = mask.astype(np.uint8)
         if self.cutting is not None:
             while(1):
@@ -128,7 +128,6 @@ class Data_Generate_Cho(Dataset):#
             img = img[None]
         mask = mask[None, ].astype(np.float32)
         img = img.astype(np.float32)
-        print("end")
         return img, mask
             
     def __len__(self):

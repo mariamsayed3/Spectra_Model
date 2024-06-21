@@ -21,8 +21,10 @@ def norm(img):
 
 def apply_aug(aug, image, mask=None):
     if mask is None:
+        print("mask is none")
         return aug(image=image)['image']
     else:
+        print("mask mawgod")
         augment = aug(image=image,mask=mask)
         return augment['image'],augment['mask']
 

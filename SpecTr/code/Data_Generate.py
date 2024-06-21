@@ -105,6 +105,7 @@ class Data_Generate_Cho(Dataset):#
                 else:
                     print("hiiii from mask else")
                     mask = mask.astype(np.int32)
+            print("before transform")
             img, mask = self.transform((img, mask))
         mask = mask.astype(np.uint8)
         if self.cutting is not None:

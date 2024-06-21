@@ -83,6 +83,8 @@ class Data_Generate_Cho(Dataset):#
         # if mask_path.endswith('.npz'):
         #     mask = np.delete(mask, 445, 0)
         #     img = np.delete(img, 445, 0)
+        
+        print(f"Image shape: {img.shape}, Mask shape: {mask.shape}")
 
         if img.shape != mask.shape:
             mask = cv2.resize(mask, (img.shape[1], img.shape[0]))

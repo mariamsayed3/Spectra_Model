@@ -21,10 +21,10 @@ def norm(img):
 
 def apply_aug(aug, image, mask=None):
     if mask is None:
-        print("mask is none")
+        # print("mask is none")
         return aug(image=image)['image']
     else:
-        print("mask mawgod")
+        # print("mask mawgod")
         augment = aug(image=image,mask=mask)
         return augment['image'],augment['mask']
 
@@ -87,7 +87,6 @@ class Transform:
             x,y = apply_aug(A.Rotate(p=1.0),x,y)
         
         if _evaluate_ratio(self.Flip_ratio):
-            print()
             x,y = apply_aug(A.Flip(p=1.0),x,y)
 
         if _evaluate_ratio(self.scale_ratio):

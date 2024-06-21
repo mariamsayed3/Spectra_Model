@@ -60,7 +60,7 @@ class Data_Generate_Cho(Dataset):#
         if img_path.endswith('.hdr'):
             img = envi.open(img_path, image=img_path.replace('.hdr', self.envi_type))[:, :, :]
         elif img_path.endswith('.npy'):
-            print("hello_2 in image")
+            # print("hello_2 in image")
             img_old = np.load(img_path)
             img = img_old[:,:,:70]
         elif img_path.endswith('.tif'):
@@ -84,7 +84,7 @@ class Data_Generate_Cho(Dataset):#
         #     mask = np.delete(mask, 445, 0)
         #     img = np.delete(img, 445, 0)
 
-        print(f"Image shape: {img.shape}, Mask shape: {mask.shape}")
+        # print(f"Image shape: {img.shape}, Mask shape: {mask.shape}")
 
         if img.shape != mask.shape:
             mask = cv2.resize(mask, (img.shape[1], img.shape[0]))

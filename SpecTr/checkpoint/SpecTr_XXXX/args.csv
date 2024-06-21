@@ -6,15 +6,15 @@ fold,"[1, 2, 3, 4]"
 device,cuda:0
 worker,4
 outtype,3d
-batch,1
+batch,8
 lr,0.0003
 wd,0.0005
-spectral_number,9718
+spectral_number,70
 channels_index,
 output,./checkpoint
 choose_translayer,"[0, 1, 1, 1]"
 experiment_name,SpecTr_XXXX
-cutting,5
+cutting,15
 epochs,5
 decode_choice,3D
 init_values,0.01

@@ -61,8 +61,8 @@ class Data_Generate_Cho(Dataset):#
             img = envi.open(img_path, image=img_path.replace('.hdr', self.envi_type))[:, :, :]
         elif img_path.endswith('.npy'):
             print("hello_2 in image")
-            img = np.load(img_path)
-            
+            img_old = np.load(img_path)
+            img = img_old[:,:,:70]
         elif img_path.endswith('.tif'):
             x, _, _, _ = tiff.read_stiff(img_path)
             x = cv2.resize(x, (320, 256), interpolation=cv2.INTER_NEAREST)

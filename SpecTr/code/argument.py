@@ -87,7 +87,8 @@ class Transform:
             x,y = apply_aug(A.Rotate(p=1.0),x,y)
         
         if _evaluate_ratio(self.Flip_ratio):
-            x,y = apply_aug(A.Flip(p=1.0),x,y)
+            print()
+            #x,y = apply_aug(A.Flip(p=1.0),x,y)
 
         if _evaluate_ratio(self.scale_ratio):
             x, y = apply_aug(A.RandomScale(p=1.0, scale_limit=0.15), x, y)
